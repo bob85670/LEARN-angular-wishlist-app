@@ -15,40 +15,9 @@
   </form>
 
   <div class="row mt-3">
-    <div class="col-sm-2">
-      <select 
-        class="form-select"
-        [(ngModel)]="listFilter"
-      >
-        <option value="0">All</option>
-        <option value="1">Unfulfilled</option>
-        <option value="2">Fulfilled</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="row mt-3">
-    <div *ngIf="visibleItems.length == 0; else showItems">
-      There are no wishes to display.
-    </div>
-  
-    <ng-template #showItems>
-      <ul class="wish-list">
-        <li *ngFor="let item of visibleItems; index as ii">
-            <div class="form-check"> 
-              <label class="form-check-label"> 
-                <input
-                  class="checkbox" 
-                  type="checkbox"
-                  [checked]="item.isComplete"
-                  [attr.data-index]="ii"
-                  (click)="toggleItem(item)"
-                > {{item.wishText}}
-              </label> 
-            </div>
-        </li>
-      </ul>
-    </ng-template>
+    <wish-list
+      [wishes]="visibleItems"
+    ></wish-list>
   </div>
   
 
