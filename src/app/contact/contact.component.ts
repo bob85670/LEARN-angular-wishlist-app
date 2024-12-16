@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormControl } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,14 +11,16 @@ import { CommonModule } from '@angular/common';
   styleUrl: './contact.component.css'
 })
 export class ContactComponent {
-  senderNameControl = new FormControl('');
-  senderEmailControl = new FormControl('');
-  senderMessageControl = new FormControl('');
+
+  contactForm = new FormGroup({
+    senderName: new FormControl(''),
+    senderEmail: new FormControl(''),
+    senderMessage: new FormControl('')
+  });
+
 
   submitForm() {
-    if (this.senderNameControl.dirty) {
-      alert('you changed the name field');
-    }
+    console.log(this.contactForm.value);
   }
 
 }
